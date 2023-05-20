@@ -6,7 +6,7 @@ function App() {
     const [numChannels, setNumChannels] = useState(16);
     const [channelIds, setChannelIds] = useState([
         '-Lrxv1_i3qc', //TRT
-        '7l_VVWZTFZk', //Cuneyt Ozdemir Canli SECIM OZEL
+        '7l_VVWZTFZk', // Aktif olarak calismiyor.
         'SqHIO2zhxbA', //HT
         'hHSmBJk6w0c', //bloombergHT
         'adf2f8UCuss', //hbrglobal

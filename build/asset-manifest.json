@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/blakfyMultiChannel/static/css/main.44e3bd3e.css",
+    "main.js": "/blakfyMultiChannel/static/js/main.5811d35c.js",
+    "index.html": "/blakfyMultiChannel/index.html",
+    "main.44e3bd3e.css.map": "/blakfyMultiChannel/static/css/main.44e3bd3e.css.map",
+    "main.5811d35c.js.map": "/blakfyMultiChannel/static/js/main.5811d35c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.44e3bd3e.css",
+    "static/js/main.5811d35c.js"
+  ]
+}

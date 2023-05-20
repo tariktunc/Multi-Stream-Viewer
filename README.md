@@ -4,4 +4,6 @@ Youtube Multi Channel
 
 Our project work continues. Those who want to support can contact tarktunc@hotmail.com.
 
-update2
+update3
+
+GitHub Pages : https://tariktunc.github.io/blakfyMultiChannel/

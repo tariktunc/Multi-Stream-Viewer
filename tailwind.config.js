@@ -13,23 +13,25 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
-    screens: {
-      mini: "0px",
-      // => @media (min-width: 0px) { ... }
-      mobile: "400px",
-      // => @media (min-width: 0px) { ... }
 
-      tablet: "640px",
-      // => @media (min-width: 640px) { ... }
-
-      laptop: "1024px",
-      // => @media (min-width: 1024px) { ... }
-
-      desktop: "1280px",
-      // => @media (min-width: 1280px) { ... }
-
-      xxl: "1920px",
+    colors: {
+      prime: {
+        petrel: "#3c78b4",
+        DEFAULT: "#fff",
+        black: "#000000",
+        benthic: "#000014",
+        blueDart: "#3c78a0",
+        kuretake: "#001428",
+        mississippi: "#3c648c",
+      },
     },
   },
-  plugins: [],
+
+  screen: {
+    sm: "640px",
+    md: "768px",
+    lg: "1280px",
+    xl: "1600px",
+  },
+  plugins: ["prettier-plugin-tailwindcss"],
 };

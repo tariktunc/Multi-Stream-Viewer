@@ -7,7 +7,6 @@ import Headers from "./SettingWindow/headers";
 import Buttons from "./SettingWindow/buttons";
 
 export default function SettingWindow(props) {
-  const [save, setSave] = useState(false);
   const [videoId, setVideoId] = useState([
     { id: 1, name: "JbT4oD65LZI" },
     { id: 2, name: "JbT4oD65LZI" },

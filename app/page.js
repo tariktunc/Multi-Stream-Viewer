@@ -7,6 +7,10 @@ export default function Home() {
   const [viewSettingWindow, setViewSettingWindow] = useState(false);
   const [activeChannel, setActiveChannel] = useState(4);
   const [data, setData] = useState([]);
+  const channelsArray = Object.keys(data).map((key) => ({
+    id: key.id,
+    name: data[key].name,
+  }));
 
   const channelGrid = (e) => {
     switch (e) {
@@ -31,7 +35,7 @@ export default function Home() {
             activeChannel
           )} justify-content-center align-items-center m-0`}
         >
-          {data.slice(0, activeChannel).map((channel) => (
+          {channelsArray.slice(0, activeChannel).map((channel) => (
             <div key={channel.id} className="col text-center p-0">
               <iframe
                 className="d-grid"
@@ -40,7 +44,7 @@ export default function Home() {
                 src={`https://www.youtube.com/embed/${channel.name}?autoplay=1&mute=1`}
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              ></iframe>
+              />
             </div>
           ))}
         </div>

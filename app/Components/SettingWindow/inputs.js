@@ -1,18 +1,9 @@
-import React from 'react';
 import { Flex, Box, Badge, TextField } from "@radix-ui/themes";
 
 export default function Inputs(props) {
-  const handleInputChange = (event) => {
-    const newValue = event.target.value;
-    const inputId = event.target.id;
-    props.setOnChange({ id: inputId, value: newValue });
-    props.channelsData[inputId - 1].name = newValue;
-  };
-
-
   return (
     <Flex direction="column" gap="3" pt="3">
-      {props.channelsData.slice(0, props.activeChannel).map((channel, index) => (
+      {props.videoId.slice(0, props.activeChannel).map((channel, index) => (
         <Box key={channel.id}>
           <Flex align="center">
             <Badge size="2">
@@ -23,8 +14,8 @@ export default function Inputs(props) {
               size="2"
               pl="2"
               placeholder="Enter Channel ID"
-              onChange={handleInputChange}
-              value={props.channelsData[index].name}
+              onChange={props.handleInputChange}
+              value={props.videoId[index].name}
               maxLength={20}
             />
           </Flex>

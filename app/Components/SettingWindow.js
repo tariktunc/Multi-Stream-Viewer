@@ -7,21 +7,73 @@ import Headers from "./SettingWindow/headers";
 import Buttons from "./SettingWindow/buttons";
 
 export default function SettingWindow(props) {
-   const [onSave, setOnSave] = useState(false);
-   const [onChange, setOnChange] = useState({ value: "", id: "" });
+   const [save, setSave] = useState(false);
+   const [videoId, setVideoId] = useState([
+      { id: 1, name: "JbT4oD65LZI" },
+      { id: 2, name: "JbT4oD65LZI" },
+      { id: 3, name: "JbT4oD65LZI" },
+      { id: 4, name: "JbT4oD65LZI" },
+      { id: 5, name: "JbT4oD65LZI" },
+      { id: 6, name: "JbT4oD65LZI" },
+      { id: 7, name: "JbT4oD65LZI" },
+      { id: 8, name: "JbT4oD65LZI" },
+      { id: 9, name: "JbT4oD65LZI" },
+      { id: 10, name: "JbT4oD65LZI" },
+      { id: 11, name: "JbT4oD65LZI" },
+      { id: 12, name: "JbT4oD65LZI" },
+      { id: 13, name: "JbT4oD65LZI" },
+      { id: 14, name: "JbT4oD65LZI" },
+      { id: 15, name: "JbT4oD65LZI" },
+      { id: 16, name: "JbT4oD65LZI" },
+   ]);
 
+   const clickSave = () => {
+      console.log("click")
+      props.setData(videoId);
+      localStorage.setItem("videoIdKey", JSON.stringify(videoId));
+   };
+
+   const onChangeHandler = (event) => {
+      const id = event.target.id;
+      const value = event.target.value;
+   
+      setVideoId((prevVideoId) => {
+         const updatedVideoId = prevVideoId.map((item) =>
+            item.id.toString() === id ? { ...item, name: value } : item
+         );
+         return updatedVideoId;
+      });
+   };
+
+   const defaultCookie = () => {
+      localStorage.clear();
+      window.location.reload();
+   };
+
+   const fullScreen = () => {
+      if (document.fullscreenElement) {
+         document.exitFullscreen();
+      } else {
+         document.documentElement.requestFullscreen();
+      }
+   };
 
    useEffect(() => {
-      if (onSave) {
-         if(localStorageData) {
+      try {
+         const localStorageData = localStorage.getItem("videoIdKey");
+         if (localStorageData) {
             const parsedData = JSON.parse(localStorageData);
-            props.setChannelsData(parsedData);
+            setVideoId(parsedData);
+            props.setData(parsedData);
+         } else {
+            const parsedData = JSON.stringify(videoId);
+            localStorage.setItem("videoIdKey", parsedData);
          }
-         console.log("Saved!"); 
+      } catch (error) {
+         console.error("localStorage error:", error);
       }
-      setOnSave(false);
-   }, [onSave, onChange])
-   
+   }, [props.setData]);
+
    return (
       <div
          className="absolute top-0 right-0 h-screen p-1"
@@ -41,10 +93,10 @@ export default function SettingWindow(props) {
                {/* buttons */}
                <Buttons setActiveChannel={props.setActiveChannel} />
                {/* inputs */}
-               <Inputs activeChannel={props.activeChannel} setChannelsData={props.setChannelsData} channelsData={props.channelsData} setOnChange={setOnChange} />
+               <Inputs handleInputChange={onChangeHandler} activeChannel={props.activeChannel} setVideoId={setVideoId} videoId={videoId} />
             </Box>
             {/* Save */}
-            <Save setOnSave={setOnSave} />
+            <Save clickSave={clickSave} />
          </ScrollArea>
       </div>
    );

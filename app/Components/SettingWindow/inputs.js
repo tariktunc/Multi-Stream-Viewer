@@ -1,19 +1,18 @@
 import React from 'react';
 import { Flex, Box, Badge, TextField } from "@radix-ui/themes";
-import { channelsData } from "@/app/Components/channelsData";
 
 export default function Inputs(props) {
-
-  const formSubmit = (event) => {
-    event.preventDefault();
-  }
-  const onChange = (e) => {
-    props.onChange(e.target.value);
+  const handleInputChange = (event) => {
+    const newValue = event.target.value;
+    const inputId = event.target.id;
+    props.setOnChange({ id: inputId, value: newValue });
+    props.channelsData[inputId - 1].name = newValue;
   };
 
+
   return (
-    <Flex direction="column" gap="3" pt="3" style={{ maxWidth: 400 }}>
-      {channelsData.slice(0, props.activeChannel).map((channel, index) => (
+    <Flex direction="column" gap="3" pt="3">
+      {props.channelsData.slice(0, props.activeChannel).map((channel, index) => (
         <Box key={channel.id}>
           <Flex align="center">
             <Badge size="2">
@@ -24,7 +23,9 @@ export default function Inputs(props) {
               size="2"
               pl="2"
               placeholder="Enter Channel ID"
-              onChange={(e) => handleInputChange(channel.id, e.target.value)}
+              onChange={handleInputChange}
+              value={props.channelsData[index].name}
+              maxLength={20}
             />
           </Flex>
         </Box>

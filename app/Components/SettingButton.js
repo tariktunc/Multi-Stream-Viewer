@@ -2,7 +2,7 @@
 
 import { Tooltip, IconButton } from "@radix-ui/themes";
 import { GearIcon } from "@radix-ui/react-icons";
-import React, { useState } from "react";
+import React from "react";
 
 export default function SettingButton(props) {
    return (

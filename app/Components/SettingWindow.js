@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, ScrollArea } from "@radix-ui/themes";
 
 import Save from "./SettingWindow/save";
@@ -8,6 +8,20 @@ import Buttons from "./SettingWindow/buttons";
 
 export default function SettingWindow(props) {
    const [onSave, setOnSave] = useState(false);
+   const [onChange, setOnChange] = useState({ value: "", id: "" });
+
+
+   useEffect(() => {
+      if (onSave) {
+         if(localStorageData) {
+            const parsedData = JSON.parse(localStorageData);
+            props.setChannelsData(parsedData);
+         }
+         console.log("Saved!"); 
+      }
+      setOnSave(false);
+   }, [onSave, onChange])
+   
    return (
       <div
          className="absolute top-0 right-0 h-screen p-1"
@@ -27,10 +41,10 @@ export default function SettingWindow(props) {
                {/* buttons */}
                <Buttons setActiveChannel={props.setActiveChannel} />
                {/* inputs */}
-               <Inputs activeChannel={props.activeChannel} onSave={onSave} />
+               <Inputs activeChannel={props.activeChannel} setChannelsData={props.setChannelsData} channelsData={props.channelsData} setOnChange={setOnChange} />
             </Box>
             {/* Save */}
-            <Save setViewSettingWindow={props.setViewSettingWindow} setOnSave={setOnSave} />
+            <Save setOnSave={setOnSave} />
          </ScrollArea>
       </div>
    );

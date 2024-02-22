@@ -12,3 +12,8 @@
 iframe {
 	aspect-ratio: 16/9;
 }
+
+/* settingwindows parent içine ekledim sorun olursa oraya bak. */
+.aspectratio {
+	aspect-ratio: 3/9;
+}

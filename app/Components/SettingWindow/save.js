@@ -5,10 +5,9 @@ import { CheckIcon } from "@radix-ui/react-icons";
 export default function Save (props) {
     return (
         <>
-            <Flex direction="column" align="center" gap="3">
+            <Flex direction="column" px="9" gap="3">
                 <Button
                     onClick={() => {
-                    props.setViewSettingWindow(false);
                     props.setOnSave(true)}}
                     color="indigo" variant="soft">
                     <CheckIcon

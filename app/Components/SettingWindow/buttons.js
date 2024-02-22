@@ -1,10 +1,16 @@
 import React from 'react'
 import { Flex, Button } from "@radix-ui/themes";
-import { buttonData } from "@/app/Components/buttonData";
 
 export default function Inputs(props) {
+    const buttonData = [
+        {id: 1, name: "1"},
+        {id: 4, name: "4"},
+        {id: 9, name: "9"},
+        {id: 16, name: "16"},
+    ];
+
     return (
-        <Flex align="center" pt="2" justify="center" gap="3">
+        <Flex pt="2" gap="3">
             {buttonData &&
                 buttonData.map((btn) => (
                     <Button
@@ -12,6 +18,7 @@ export default function Inputs(props) {
                         size="2"
                         color="indigo"
                         variant="soft"
+                        // Page.js sayfasından SettingWindow.js aktarılarak burada kullanıldı.
                         onClick={() => props.setActiveChannel(btn.id)}
                     >
                         {btn.name}

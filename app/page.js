@@ -1,7 +1,10 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Suspense } from "react";
+
 import SettingButton from "@/app/Components/SettingButton";
 import SettingWindow from "@/app/Components/SettingWindow";
+import Loading from "@/app/Components/Loading";
 
 export default function Home() {
   const [viewSettingWindow, setViewSettingWindow] = useState(false);
@@ -35,18 +38,20 @@ export default function Home() {
             activeChannel
           )} justify-content-center align-items-center m-0`}
         >
-          {channelsArray.slice(0, activeChannel).map((channel) => (
-            <div key={channel.id} className="col text-center p-0">
-              <iframe
-                className="d-grid"
-                width="100%"
-                height="100%"
-                src={`https://www.youtube.com/embed/${channel.name}?autoplay=1&mute=1`}
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              />
-            </div>
-          ))}
+          <Suspense fallback={<Loading />}>
+            {data.slice(0, activeChannel).map((channel) => (
+              <div key={channel.id} className="col text-center p-0">
+                <iframe
+                  className="d-grid"
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${channel.name}?autoplay=1&mute=1`}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                />
+              </div>
+            ))}
+          </Suspense>
         </div>
       </div>
       {viewSettingWindow ? (

@@ -59,7 +59,7 @@ export default function SettingWindow(props) {
 
   useEffect(() => {
     try {
-      const localStorageData = localStorage.getItem("videoIdKey");
+      const localStorageData = localStorage.getItem("channelKey");
       if (localStorageData) {
         const parsedData = JSON.parse(localStorageData);
         setVideoId(parsedData);

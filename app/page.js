@@ -14,15 +14,15 @@ export default function Home() {
   const channelGrid = (e) => {
     switch (e) {
       case 1:
-        return "grid-cols-1";
+        return "grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 justify-content-center align-items-center m-0";
       case 4:
-        return "grid-cols-2";
+        return "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 justify-content-center align-items-center m-0";
       case 9:
-        return "grid-cols-3";
+        return "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 justify-content-center align-items-center m-0";
       case 16:
-        return "grid-cols-4";
+        return "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 justify-content-center align-items-center m-0";
       default:
-        return "grid-cols-1";
+        return "grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 justify-content-center align-items-center m-0";
     }
   };
 
@@ -44,11 +44,7 @@ export default function Home() {
   return (
     <main>
       <div className="msk-container">
-        <div
-          className={`grid ${channelGrid(
-            activeChannel
-          )} justify-content-center align-items-center m-0`}
-        >
+        <div className={`${channelGrid(activeChannel)}`}>
           <Suspense fallback={<Loading />}>
             {data.slice(0, activeChannel || parsedButton).map((channel) => (
               <div key={channel.id} className="col text-center p-0">

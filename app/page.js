@@ -11,6 +11,24 @@ export default function Home() {
   const [viewSettingWindow, setViewSettingWindow] = useState(false);
   const [activeChannel, setActiveChannel] = useState(4);
   const [data, setData] = useState([]);
+  const [videoId, setVideoId] = useState([
+    { id: 1, name: "OypUpUTYAHI" },
+    { id: 2, name: "pWbTBJH8k4k" },
+    { id: 3, name: "2e0DZuMlU8k" },
+    { id: 4, name: "ur20fjIDphA" },
+    { id: 5, name: "21X5lGlDOfg" },
+    { id: 6, name: "6BX-NUzBSp8" },
+    { id: 7, name: "qiHa_L1mbig" },
+    { id: 8, name: "garBdyAGmz8" },
+    { id: 9, name: "w9uJg68CV4g" },
+    { id: 10, name: "YDfiTGGPYCk" },
+    { id: 11, name: "hHSmBJk6w0c" },
+    { id: 12, name: "JbT4oD65LZI" }, // x
+    { id: 13, name: "xRPjKQtRXR8" },
+    { id: 14, name: "2i8lfP9oqvk" },
+    { id: 15, name: "RLEKowJq14U" },
+    { id: 16, name: "GDb_j9sn2UQ" },
+  ]);
 
   const channelGrid = (e) => {
     switch (e) {
@@ -29,9 +47,11 @@ export default function Home() {
 
   useEffect(() => {
     try {
-      localStorage.setItem("buttonKey", JSON.stringify(activeChannel));
+      if (localStorage.getItem("channelKey") === null) {
+        localStorage.setItem("buttonKey", JSON.stringify(activeChannel));
+      }
     } catch (e) {
-      console.log(e);
+      console.log("Hata App.js içerisinde", e);
     }
     const storedChannels = localStorage.getItem("channelKey");
     const storedButton = localStorage.getItem("buttonKey");
@@ -86,6 +106,8 @@ export default function Home() {
       </div>
       {viewSettingWindow ? (
         <SettingWindow
+          setVideoId={setVideoId}
+          videoId={videoId}
           activeChannel={activeChannel}
           setActiveChannel={setActiveChannel}
           data={data}

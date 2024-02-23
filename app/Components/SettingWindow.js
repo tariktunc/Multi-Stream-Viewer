@@ -8,36 +8,17 @@ import Headers from "./SettingWindow/headers";
 import Buttons from "./SettingWindow/buttons";
 
 export default function SettingWindow(props) {
-  const [videoId, setVideoId] = useState([
-    { id: 1, name: "OypUpUTYAHI" },
-    { id: 2, name: "pWbTBJH8k4k" },
-    { id: 3, name: "2e0DZuMlU8k" },
-    { id: 4, name: "ur20fjIDphA" },
-    { id: 5, name: "21X5lGlDOfg" },
-    { id: 6, name: "6BX-NUzBSp8" },
-    { id: 7, name: "qiHa_L1mbig" },
-    { id: 8, name: "garBdyAGmz8" },
-    { id: 9, name: "w9uJg68CV4g" },
-    { id: 10, name: "YDfiTGGPYCk" },
-    { id: 11, name: "hHSmBJk6w0c" },
-    { id: 12, name: "JbT4oD65LZI" }, // x
-    { id: 13, name: "xRPjKQtRXR8" },
-    { id: 14, name: "2i8lfP9oqvk" },
-    { id: 15, name: "RLEKowJq14U" },
-    { id: 16, name: "GDb_j9sn2UQ" },
-  ]);
-
   const clickSave = () => {
     console.log("click");
-    props.setData(videoId);
-    localStorage.setItem("channelKey", JSON.stringify(videoId));
+    props.setData(props.videoId);
+    localStorage.setItem("channelKey", JSON.stringify(props.videoId));
   };
 
   const onChangeHandler = (event) => {
     const id = event.target.id;
     const value = event.target.value;
 
-    setVideoId((prevVideoId) => {
+    props.setVideoId((prevVideoId) => {
       const updatedVideoId = prevVideoId.map((item) =>
         item.id.toString() === id ? { ...item, name: value } : item
       );
@@ -63,10 +44,10 @@ export default function SettingWindow(props) {
       const localStorageData = localStorage.getItem("channelKey");
       if (localStorageData) {
         const parsedData = JSON.parse(localStorageData);
-        setVideoId(parsedData);
+        props.setVideoId(parsedData);
         props.setData(parsedData);
       } else {
-        const parsedData = JSON.stringify(videoId);
+        const parsedData = JSON.stringify(props.videoId);
         localStorage.setItem("channelKey", parsedData);
       }
     } catch (error) {
@@ -102,8 +83,8 @@ export default function SettingWindow(props) {
           <Inputs
             handleInputChange={onChangeHandler}
             activeChannel={props.activeChannel}
-            setVideoId={setVideoId}
-            videoId={videoId}
+            setVideoId={props.setVideoId}
+            videoId={props.videoId}
           />
         </Box>
         {/* Save */}

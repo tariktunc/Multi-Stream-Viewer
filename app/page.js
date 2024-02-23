@@ -28,6 +28,11 @@ export default function Home() {
   };
 
   useEffect(() => {
+    try {
+      localStorage.setItem("buttonKey", JSON.stringify(activeChannel));
+    } catch (e) {
+      console.log(e);
+    }
     const storedChannels = localStorage.getItem("channelKey");
     const storedButton = localStorage.getItem("buttonKey");
     if (storedChannels) {

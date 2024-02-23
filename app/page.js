@@ -56,8 +56,8 @@ export default function Home() {
         >
           <Text>Welcome to Multi Channel</Text>
           <Text>
-            Please adjust your user channel "settings" and press the "Save"
-            button to save the changes.
+            Please adjust your user channel &rdquo;settings&rdquo; and press the
+            &rdquo;Save&rdquo; button to save the changes.
           </Text>
         </Flex>
       </Box>

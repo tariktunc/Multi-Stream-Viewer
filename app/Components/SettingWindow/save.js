@@ -8,7 +8,6 @@ export default function Save(props) {
         onClick={() => {
           props.clickSave();
         }}
-        color="indigo"
         variant="soft"
       >
         <CheckIcon className="cursor-pointer" />
@@ -18,7 +17,6 @@ export default function Save(props) {
         onClick={() => {
           props.defaultCookie();
         }}
-        color="indigo"
         variant="soft"
       >
         <TrashIcon className="cursor-pointer" />

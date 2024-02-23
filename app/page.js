@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Suspense } from "react";
+import { Box, Flex, Text } from "@radix-ui/themes";
 
 import SettingButton from "@/app/Components/SettingButton";
 import SettingWindow from "@/app/Components/SettingWindow";
@@ -34,8 +35,6 @@ export default function Home() {
       const parsedButton = JSON.parse(storedButton);
       setActiveChannel(parsedButton);
       setData(parsedChannels);
-      console.log("localStorage ", parsedChannels);
-      console.log("localStorage ", parsedButton);
     } else {
       console.log("localStorage'da kayitli kanallar bulunamadi.");
     }
@@ -43,6 +42,25 @@ export default function Home() {
 
   return (
     <main>
+      <Box
+        position={"absolute"}
+        width={"100%"}
+        height={"100%"}
+        className="zindex"
+      >
+        <Flex
+          direction={"column"}
+          align={"center"}
+          justify={"center"}
+          height={"100%"}
+        >
+          <Text>Welcome to Multi Channel</Text>
+          <Text>
+            Please adjust your user channel "settings" and press the "Save"
+            button to save the changes.
+          </Text>
+        </Flex>
+      </Box>
       <div className="msk-container">
         <div className={`${channelGrid(activeChannel)}`}>
           <Suspense fallback={<Loading />}>

@@ -6,7 +6,7 @@ export default function Inputs(props) {
       {props.videoId.slice(0, props.activeChannel).map((channel, index) => (
         <Box key={channel.id}>
           <Flex align="center">
-            <Badge size="2">
+            <Badge variant="surface" color={"yellow"} size="2">
               {channel.id && channel.id < 10 ? "0" + channel.id : channel.id}
             </Badge>
             <TextField.Input

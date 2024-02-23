@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Flex, Button } from "@radix-ui/themes";
+import { Box, Flex, Button } from "@radix-ui/themes";
 
 export default function Inputs(props) {
   const buttonData = [
@@ -14,14 +14,14 @@ export default function Inputs(props) {
   };
 
   return (
-    <Flex pt="2" gap="3">
+    <Flex justify={"center"} p="1" gap="3">
       {buttonData &&
         buttonData.map((btn) => (
           <Button
             key={btn.id}
             size="2"
-            color="indigo"
             variant="soft"
+            highContrast
             // Page.js sayfasından SettingWindow.js aktarılarak burada kullanıldı.
             onClick={() => {
               props.setActiveChannel(btn.id), onClickHandler(btn.id);

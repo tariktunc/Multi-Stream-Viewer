@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Suspense } from "react";
 
 import SettingButton from "@/app/Components/SettingButton";
@@ -10,10 +10,6 @@ export default function Home() {
   const [viewSettingWindow, setViewSettingWindow] = useState(false);
   const [activeChannel, setActiveChannel] = useState(4);
   const [data, setData] = useState([]);
-  const channelsArray = Object.keys(data).map((key) => ({
-    id: key.id,
-    name: data[key].name,
-  }));
 
   const channelGrid = (e) => {
     switch (e) {
@@ -30,6 +26,21 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    const storedChannels = localStorage.getItem("channelKey");
+    const storedButton = localStorage.getItem("buttonKey");
+    if (storedChannels) {
+      const parsedChannels = JSON.parse(storedChannels);
+      const parsedButton = JSON.parse(storedButton);
+      setActiveChannel(parsedButton);
+      setData(parsedChannels);
+      console.log("localStorage ", parsedChannels);
+      console.log("localStorage ", parsedButton);
+    } else {
+      console.log("localStorage'da kayitli kanallar bulunamadi.");
+    }
+  }, []);
+
   return (
     <main>
       <div className="msk-container">
@@ -39,7 +50,7 @@ export default function Home() {
           )} justify-content-center align-items-center m-0`}
         >
           <Suspense fallback={<Loading />}>
-            {data.slice(0, activeChannel).map((channel) => (
+            {data.slice(0, activeChannel || parsedButton).map((channel) => (
               <div key={channel.id} className="col text-center p-0">
                 <iframe
                   className="d-grid"

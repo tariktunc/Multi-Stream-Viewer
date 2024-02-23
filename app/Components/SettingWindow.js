@@ -29,7 +29,7 @@ export default function SettingWindow(props) {
   const clickSave = () => {
     console.log("click");
     props.setData(videoId);
-    localStorage.setItem("videoIdKey", JSON.stringify(videoId));
+    localStorage.setItem("channelKey", JSON.stringify(videoId));
   };
 
   const onChangeHandler = (event) => {
@@ -66,7 +66,7 @@ export default function SettingWindow(props) {
         props.setData(parsedData);
       } else {
         const parsedData = JSON.stringify(videoId);
-        localStorage.setItem("videoIdKey", parsedData);
+        localStorage.setItem("channelKey", parsedData);
       }
     } catch (error) {
       console.error("localStorage error:", error);
@@ -93,7 +93,10 @@ export default function SettingWindow(props) {
             fullScreen={fullScreen}
           />
           {/* buttons */}
-          <Buttons setActiveChannel={props.setActiveChannel} />
+          <Buttons
+            activeChannel={props.activeChannel}
+            setActiveChannel={props.setActiveChannel}
+          />
           {/* inputs */}
           <Inputs
             handleInputChange={onChangeHandler}

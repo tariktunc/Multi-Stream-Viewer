@@ -20,8 +20,7 @@ export default function Inputs(props) {
           <Button
             key={btn.id}
             size="2"
-            variant="soft"
-            highContrast
+            variant="surface"
             // Page.js sayfasından SettingWindow.js aktarılarak burada kullanıldı.
             onClick={() => {
               props.setActiveChannel(btn.id), onClickHandler(btn.id);

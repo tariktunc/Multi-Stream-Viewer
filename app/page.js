@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Suspense } from "react";
-import { Box, Flex, Text } from "@radix-ui/themes";
+import { Box, Flex, Text, Avatar } from "@radix-ui/themes";
 
 import SettingButton from "@/app/Components/SettingButton";
 import SettingWindow from "@/app/Components/SettingWindow";
@@ -79,6 +79,9 @@ export default function Home() {
           justify={"center"}
           height={"100%"}
         >
+          <Flex gap="2">
+            <Avatar size={"7"} src="/blakfyLogo.jpg" fallback="logo" />
+          </Flex>
           <Text>Welcome to Multi Channel</Text>
           <Text>
             Please adjust your user channel &rdquo;settings&rdquo; and press the

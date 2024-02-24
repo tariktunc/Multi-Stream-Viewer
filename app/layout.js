@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       <body>
         <Theme
           appearance="dark"
-          accentColor="yellow"
+          accentColor="orange"
           grayColor="mauve"
           radius="small"
         >

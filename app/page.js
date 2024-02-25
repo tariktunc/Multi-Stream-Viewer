@@ -37,9 +37,9 @@ export default function Home() {
       case 4:
         return "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 justify-content-center align-items-center m-0";
       case 9:
-        return "grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 justify-content-center align-items-center m-0";
+        return "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 justify-content-center align-items-center m-0";
       case 16:
-        return "grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 justify-content-center align-items-center m-0";
+        return "grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 justify-content-center align-items-center m-0";
       default:
         return "grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 justify-content-center align-items-center m-0";
     }
@@ -67,6 +67,8 @@ export default function Home() {
 
   return (
     <main>
+      {/* Welcome Screen */}
+      {/* zindex globalcss de tanımlamıştır. "-1" */}
       <Box
         position={"absolute"}
         width={"100%"}
@@ -89,24 +91,28 @@ export default function Home() {
           </Text>
         </Flex>
       </Box>
-      <div className="msk-container">
-        <div className={`${channelGrid(activeChannel)}`}>
-          <Suspense fallback={<Loading />}>
-            {data.slice(0, activeChannel || parsedButton).map((channel) => (
-              <div key={channel.id} className="col text-center p-0">
-                <iframe
-                  className="d-grid"
-                  width="100%"
-                  height="100%"
-                  src={`https://www.youtube.com/embed/${channel.name}?autoplay=1&mute=1`}
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                />
-              </div>
-            ))}
-          </Suspense>
-        </div>
+
+      {/* Youtube Screen */}
+      <div
+        className={`aspect-video max-h-screen max-w-screen m-auto h-auto ${channelGrid(
+          activeChannel
+        )}`}
+      >
+        <Suspense fallback={<Loading />}>
+          {data.slice(0, activeChannel || parsedButton).map((channel) => (
+            <iframe
+              className="aspect-video"
+              width="100%"
+              height="100%"
+              src={`https://www.youtube.com/embed/${channel.name}?autoplay=1&mute=1`}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            />
+          ))}
+        </Suspense>
       </div>
+
+      {/* Setting Screen */}
       {viewSettingWindow ? (
         <SettingWindow
           setVideoId={setVideoId}

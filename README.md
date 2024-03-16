@@ -31,3 +31,4 @@ Kurulum tamamlandıktan sonra, takip etmek istediğiniz kanalları ekleyebilir v
 ## Katkıda Bulunma
 
 Katkılar, açık kaynak topluluğunu öğrenmek, ilham almak ve yaratmak için bu kadar harika bir yer yapan şeydir. Yaptığınız her türlü katkı **çok takdir edilmektedir**.
+

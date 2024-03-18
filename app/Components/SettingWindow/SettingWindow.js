@@ -12,6 +12,18 @@ export default function SettingWindow(props) {
     localStorage.setItem("channelKey", JSON.stringify(props.videoId));
   };
 
+  const platformChange = (channelId, platforms) => {
+    // channelId ve platforms değerlerini kullanarak güncelleme yapacak
+    props.setVideoId((prevVideoId) => {
+      const updatedVideoId = prevVideoId.map((item) =>
+        item.id.toString() === channelId.toString()
+          ? { ...item, platform: platforms }
+          : item
+      );
+      return updatedVideoId;
+    });
+  };
+
   const onChangeHandler = (event) => {
     const id = event.target.id;
     const value = event.target.value;
@@ -20,12 +32,9 @@ export default function SettingWindow(props) {
       const updatedVideoId = prevVideoId.map((item) =>
         item.id.toString() === id ? { ...item, name: value } : item
       );
+
       return updatedVideoId;
     });
-  };
-
-  const platformChange = (event) => {
-    console.log("log");
   };
 
   React.useEffect(() => {
@@ -68,10 +77,12 @@ export default function SettingWindow(props) {
         >
           {props.videoId.slice(0, props.activeChannel).map((channel, index) => (
             <ChannelsInput
+              key={channel.id}
               number={channel.id}
               id={channel.id}
-              handleInputChange={onChangeHandler}
               videoId={props.videoId[index].name}
+              videoPlatfrom={props.videoId[index].platform}
+              handleInputChange={onChangeHandler}
               platformChange={platformChange}
             />
           ))}

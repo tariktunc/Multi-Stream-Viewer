@@ -16,6 +16,7 @@ export default function Channel(props) {
         <Input
           //! Kanal ID sini temsil eder
           id={props.id}
+          name={props.id}
           //! id bilgisini takip ederek input'un içeriğinin değişimini sağlar.
           handleInputChange={props.handleInputChange}
           //! Hangi input'un değiştiğini id üzerinden takip eder
@@ -24,6 +25,8 @@ export default function Channel(props) {
         {/* //?  Platform seçimini temsil eder */}
         <Platform
           //! Seçilen platform bilgisini temsil eder
+          id={props.id}
+          videoPlatfrom={props.videoPlatfrom}
           platformChange={props.platformChange}
         />
       </Flex>

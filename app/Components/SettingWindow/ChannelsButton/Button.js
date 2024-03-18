@@ -3,7 +3,6 @@ import { Button } from "@radix-ui/themes";
 export default function ChannelsButton(props) {
   return (
     <Button
-      key={props.key}
       size="2"
       variant="surface"
       onClick={() => {

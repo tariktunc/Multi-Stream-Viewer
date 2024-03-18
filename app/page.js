@@ -22,7 +22,7 @@ export default function Home() {
     { id: 9, name: "w9uJg68CV4g", platform: "youtube" },
     { id: 10, name: "YDfiTGGPYCk", platform: "youtube" },
     { id: 11, name: "hHSmBJk6w0c", platform: "youtube" },
-    { id: 12, name: "JbT4oD65LZI", platform: "youtube" }, // x
+    { id: 12, name: "JbT4oD65LZI", platform: "youtube" },
     { id: 13, name: "xRPjKQtRXR8", platform: "youtube" },
     { id: 14, name: "2i8lfP9oqvk", platform: "youtube" },
     { id: 15, name: "RLEKowJq14U", platform: "youtube" },
@@ -79,6 +79,7 @@ export default function Home() {
         <Suspense fallback={<Loading />}>
           {data.slice(0, activeChannel || parsedButton).map((channel) => (
             <Iframe
+              key={channel.id}
               platform={channel.platform}
               channelName={channel.name}
               id="2"

@@ -1,15 +1,13 @@
-"use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Box, ScrollArea } from "@radix-ui/themes";
 
-import Save from "./SettingWindow/save";
-import Inputs from "./SettingWindow/inputs";
-import Headers from "./SettingWindow/headers";
-import Buttons from "./SettingWindow/buttons";
+import ChannelsInput from "./ChannelsInput/ChannelsInput";
+import ChannelButtonSelector from "./ChannelsButton/ChannelButtonSelector";
+import FormButtons from "./FormButtons/FormButtons";
+import Headers from "./HeaderContainer/Headers";
 
 export default function SettingWindow(props) {
   const clickSave = () => {
-    console.log("click");
     props.setData(props.videoId);
     localStorage.setItem("channelKey", JSON.stringify(props.videoId));
   };
@@ -26,20 +24,11 @@ export default function SettingWindow(props) {
     });
   };
 
-  const defaultCookie = () => {
-    localStorage.clear();
-    window.location.reload();
+  const platformChange = (event) => {
+    console.log("log");
   };
 
-  const fullScreen = () => {
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-    } else {
-      document.documentElement.requestFullscreen();
-    }
-  };
-
-  useEffect(() => {
+  React.useEffect(() => {
     try {
       const localStorageData = localStorage.getItem("channelKey");
       if (localStorageData) {
@@ -57,10 +46,18 @@ export default function SettingWindow(props) {
 
   return (
     <div
-      className="absolute top-0 right-0 h-screen p-1"
+      className="absolute top-0 right-0 h-screen p-5"
       style={{ background: "color(display-p3 0.068 0.074 0.118)" }}
     >
       <ScrollArea scrollbars="vertical" style={{ height: "100%" }}>
+        {/* //? Headers */}
+        <Headers setViewSettingWindow={props.setViewSettingWindow} />
+        {/* //? ChannelButtonSelector  */}
+        <ChannelButtonSelector
+          activeChannel={props.activeChannel}
+          setActiveChannel={props.setActiveChannel}
+        />
+        {/* //? Inputs */}
         <Box
           width="100%"
           height="100%"
@@ -69,26 +66,18 @@ export default function SettingWindow(props) {
             background: "color(display-p3 0.068 0.074 0.118)",
           }}
         >
-          {/* headers */}
-          <Headers
-            setViewSettingWindow={props.setViewSettingWindow}
-            fullScreen={fullScreen}
-          />
-          {/* buttons */}
-          <Buttons
-            activeChannel={props.activeChannel}
-            setActiveChannel={props.setActiveChannel}
-          />
-          {/* inputs */}
-          <Inputs
-            handleInputChange={onChangeHandler}
-            activeChannel={props.activeChannel}
-            setVideoId={props.setVideoId}
-            videoId={props.videoId}
-          />
+          {props.videoId.slice(0, props.activeChannel).map((channel, index) => (
+            <ChannelsInput
+              number={channel.id}
+              id={channel.id}
+              handleInputChange={onChangeHandler}
+              videoId={props.videoId[index].name}
+              platformChange={platformChange}
+            />
+          ))}
         </Box>
-        {/* Save */}
-        <Save clickSave={clickSave} defaultCookie={defaultCookie} />
+        {/* //? SaveBtn */}
+        <FormButtons clickSave={clickSave} />
       </ScrollArea>
     </div>
   );

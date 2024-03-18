@@ -1,6 +1,7 @@
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import "./globals.css";
+import RadixTheme from "@/utils/RadixTheme";
 
 export const metadata = {
   title: "Multi Channel",
@@ -11,14 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body>
-        <Theme
-          appearance="dark"
-          accentColor="orange"
-          grayColor="mauve"
-          radius="small"
-        >
-          {children}
-        </Theme>
+        <RadixTheme>{children}</RadixTheme>
       </body>
     </html>
   );

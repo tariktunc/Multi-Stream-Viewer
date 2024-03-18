@@ -54,11 +54,17 @@ export default function SettingWindow(props) {
   }, [props.setData]);
 
   return (
-    <div
-      className="absolute top-0 right-0 h-screen p-5"
-      style={{ background: "color(display-p3 0.068 0.074 0.118)" }}
+    <Box
+      position="absolute"
+      top={"0"}
+      right={"0"}
+      height={"100%"}
+      className="dark:bg-[#121113] bg-white"
     >
-      <ScrollArea scrollbars="vertical" style={{ height: "100%" }}>
+      <ScrollArea
+        scrollbars="vertical"
+        style={{ height: "100%", padding: "2rem" }}
+      >
         {/* //? Headers */}
         <Headers setViewSettingWindow={props.setViewSettingWindow} />
         {/* //? ChannelButtonSelector  */}
@@ -67,14 +73,7 @@ export default function SettingWindow(props) {
           setActiveChannel={props.setActiveChannel}
         />
         {/* //? Inputs */}
-        <Box
-          width="100%"
-          height="100%"
-          style={{
-            padding: "var(--space-3)",
-            background: "color(display-p3 0.068 0.074 0.118)",
-          }}
-        >
+        <Box width="100%" height="100%">
           {props.videoId.slice(0, props.activeChannel).map((channel, index) => (
             <ChannelsInput
               key={channel.id}
@@ -90,6 +89,6 @@ export default function SettingWindow(props) {
         {/* //? SaveBtn */}
         <FormButtons clickSave={clickSave} />
       </ScrollArea>
-    </div>
+    </Box>
   );
 }

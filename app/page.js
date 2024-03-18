@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
 import { Suspense } from "react";
-import { Box, Flex, Text, Avatar } from "@radix-ui/themes";
-
 import Loading from "@/app/Components/Loading/Loading";
 import Setting from "./Components/Setting";
 import WelcomePage from "./Components/WelcomePage/WelcomePage";
 import Iframe from "./Components/Iframe/Iframe";
+
 export default function Home() {
   const [activeChannel, setActiveChannel] = React.useState(4);
   const [data, setData] = React.useState([]);

@@ -3,7 +3,7 @@ import SettingWindow from "./SettingWindow/SettingWindow";
 import SettingButton from "./SettingButton/SettingButton";
 
 export default function Setting(props) {
-  const [viewSettingWindow, setViewSettingWindow] = React.useState(true);
+  const [viewSettingWindow, setViewSettingWindow] = React.useState(false);
 
   return (
     <>

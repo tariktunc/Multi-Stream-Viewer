@@ -5,27 +5,28 @@ import Loading from "@/app/Components/Loading/Loading";
 import Setting from "./Components/Setting";
 import WelcomePage from "./Components/WelcomePage/WelcomePage";
 import Iframe from "./Components/Iframe/Iframe";
+import { Container } from "@radix-ui/themes";
 
 export default function Home() {
   const [activeChannel, setActiveChannel] = React.useState(4);
   const [data, setData] = React.useState([]);
   const [videoId, setVideoId] = React.useState([
-    { id: 1, name: "OypUpUTYAHI", platform: "youtube" },
-    { id: 2, name: "pWbTBJH8k4k", platform: "youtube" },
-    { id: 3, name: "2e0DZuMlU8k", platform: "youtube" },
-    { id: 4, name: "ur20fjIDphA", platform: "youtube" },
-    { id: 5, name: "21X5lGlDOfg", platform: "youtube" },
-    { id: 6, name: "6BX-NUzBSp8", platform: "youtube" },
-    { id: 7, name: "qiHa_L1mbig", platform: "youtube" },
-    { id: 8, name: "garBdyAGmz8", platform: "youtube" },
-    { id: 9, name: "w9uJg68CV4g", platform: "youtube" },
-    { id: 10, name: "YDfiTGGPYCk", platform: "youtube" },
-    { id: 11, name: "hHSmBJk6w0c", platform: "youtube" },
-    { id: 12, name: "JbT4oD65LZI", platform: "youtube" },
-    { id: 13, name: "xRPjKQtRXR8", platform: "youtube" },
-    { id: 14, name: "2i8lfP9oqvk", platform: "youtube" },
-    { id: 15, name: "RLEKowJq14U", platform: "youtube" },
-    { id: 16, name: "GDb_j9sn2UQ", platform: "youtube" },
+    { id: 1, name: "ZgOw5f_J0mY", platform: "youtube" }, // FATİH ALTAYLI
+    { id: 2, name: "purplebixi", platform: "kick" }, // PurpleBixi
+    { id: 3, name: "FsT3k6jm-bs", platform: "youtube" }, // CUNEYT OZDEMIR
+    { id: 4, name: "EyDtfGmBpfE", platform: "youtube" }, // SOZCU
+    { id: 5, name: "-Lrxv1_i3qc", platform: "youtube" }, // TRT HABER
+    { id: 6, name: "MWW-I4EJZ-8", platform: "youtube" }, // A HABER
+    { id: 7, name: "-HJwrahoMsQ", platform: "youtube" }, // HALK TV
+    { id: 8, name: "6BX-NUzBSp8", platform: "youtube" }, // HABERGLOBAL
+    { id: 9, name: "sCSV2APNHf4", platform: "youtube" }, // TGRT HABER
+    { id: 10, name: "-RORLrBwJD0", platform: "youtube" }, // NTV
+    { id: 11, name: "GDb_j9sn2UQ", platform: "youtube" }, // TV 100
+    { id: 12, name: "n-vaYaRIb00", platform: "youtube" }, // ULUSAL KANAL
+    { id: 13, name: "SSxxDb7t-dE", platform: "youtube" }, // TV NET
+    { id: 14, name: "K-XJcste48c", platform: "youtube" }, // 24 TV
+    { id: 15, name: "MFcrNDzyR64", platform: "youtube" }, // TELE 1
+    { id: 16, name: "cavs", platform: "kick" },
   ]);
 
   const channelGrid = (e) => {

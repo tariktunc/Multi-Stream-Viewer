@@ -19,7 +19,7 @@ export default function ClearCookie() {
   return (
     <Button onClick={() => clearMyCookie()} variant="soft">
       <TrashIcon className="cursor-pointer" />
-      Clear Cookie
+      Clear Cookie / Reset
     </Button>
   );
 }

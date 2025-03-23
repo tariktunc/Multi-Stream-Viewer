@@ -11,22 +11,22 @@ export default function Home() {
   const [activeChannel, setActiveChannel] = React.useState(4);
   const [data, setData] = React.useState([]);
   const [videoId, setVideoId] = React.useState([
-    { id: 1, name: "ZgOw5f_J0mY", platform: "youtube" }, // FATİH ALTAYLI
-    { id: 2, name: "purplebixi", platform: "kick" }, // PurpleBixi
-    { id: 3, name: "FsT3k6jm-bs", platform: "youtube" }, // CUNEYT OZDEMIR
-    { id: 4, name: "EyDtfGmBpfE", platform: "youtube" }, // SOZCU
+    { id: 1, name: "cavs", platform: "kick" }, // FATİH ALTAYLI
+    { id: 2, name: "_kBNdEtVndI", platform: "youtube" }, // PurpleBixi
+    { id: 3, name: "ztmY_cCtUl0", platform: "youtube" }, // CUNEYT OZDEMIR
+    { id: 4, name: "7HN-D5yXtiw", platform: "youtube" }, // SOZCU
     { id: 5, name: "-Lrxv1_i3qc", platform: "youtube" }, // TRT HABER
-    { id: 6, name: "MWW-I4EJZ-8", platform: "youtube" }, // A HABER
-    { id: 7, name: "-HJwrahoMsQ", platform: "youtube" }, // HALK TV
-    { id: 8, name: "6BX-NUzBSp8", platform: "youtube" }, // HABERGLOBAL
-    { id: 9, name: "sCSV2APNHf4", platform: "youtube" }, // TGRT HABER
-    { id: 10, name: "-RORLrBwJD0", platform: "youtube" }, // NTV
-    { id: 11, name: "GDb_j9sn2UQ", platform: "youtube" }, // TV 100
-    { id: 12, name: "n-vaYaRIb00", platform: "youtube" }, // ULUSAL KANAL
-    { id: 13, name: "SSxxDb7t-dE", platform: "youtube" }, // TV NET
-    { id: 14, name: "K-XJcste48c", platform: "youtube" }, // 24 TV
-    { id: 15, name: "MFcrNDzyR64", platform: "youtube" }, // TELE 1
-    { id: 16, name: "cavs", platform: "kick" },
+    { id: 6, name: "DbQ4HGgr7Xo", platform: "youtube" }, // A HABER
+    { id: 7, name: "VXMR3YQ7W3s", platform: "youtube" }, // HALK TV
+    { id: 8, name: "RNVNlJSUFoE", platform: "youtube" }, // HABERGLOBAL
+    { id: 9, name: "ZSWPj9szKb8", platform: "youtube" }, // TGRT HABER
+    { id: 10, name: "ztmY_cCtUl0", platform: "youtube" }, // NTV
+    { id: 11, name: "6BX-NUzBSp8", platform: "youtube" }, // TV 100
+    { id: 12, name: "tR0n3m6FqKo", platform: "youtube" }, // ULUSAL KANAL
+    { id: 13, name: "fNqmmqNNGp8", platform: "youtube" }, // TV NET
+    { id: 14, name: "AkPjHCeQ3io", platform: "youtube" }, // 24 TV
+    { id: 15, name: "XihyuKSyUD0", platform: "youtube" }, // TELE 1
+    { id: 16, name: "Fr0Dku2UZmI", platform: "youtube" },
   ]);
 
   const channelGrid = (e) => {
